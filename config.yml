@@ -1,5 +1,77 @@
 twinspect: 0.1.0
 algorithms:
+  - name: Image Dhash
+    label: image_dhash
+    mode: image
+    function: twinspect.algos.clip_pch:image_dhash
+    dependencies:
+      - dhash==1.4
+  - name: Image Phash
+    label: image_phash
+    mode: image
+    function: twinspect.algos.clip_pch:image_phash
+    dependencies:
+      - imagehash==4.3.1
+  - name: Image Phash simple
+    label: image_phash_simple
+    mode: image
+    function: twinspect.algos.clip_pch:image_phash_simple
+    dependencies:
+      - imagehash==4.3.1
+  - name: Image CLIP PCH 32 4
+    label: image_clip_pch_32_4
+    mode: image
+    function: twinspect.algos.clip_pch:image_clip_pch_32_4
+    dependencies:
+      - torch==2.1.0
+  - name: Image CLIP PCH 16 4
+    label: image_clip_pch_16_4
+    mode: image
+    function: twinspect.algos.clip_pch:image_clip_pch_16_4
+    dependencies:
+      - torch==2.1.0
+  - name: Image CLIP PCH 8 4
+    label: image_clip_pch_8_4
+    mode: image
+    function: twinspect.algos.clip_pch:image_clip_pch_8_4
+    dependencies:
+      - torch==2.1.0
+  - name: Image CLIP PCH 8 16
+    label: image_clip_pch_8_16
+    mode: image
+    function: twinspect.algos.clip_pch:image_clip_pch_8_16
+    dependencies:
+      - torch==2.1.0
+  - name: Image CLIP PCH 16 16
+    label: image_clip_pch_16_16
+    mode: image
+    function: twinspect.algos.clip_pch:image_clip_pch_16_16
+    dependencies:
+      - torch==2.1.0
+  - name: Image CLIP PCH 32 16
+    label: image_clip_pch_32_16
+    mode: image
+    function: twinspect.algos.clip_pch:image_clip_pch_32_16
+    dependencies:
+      - torch==2.1.0
+  - name: Image CLIP PCH 64 16
+    label: image_clip_pch_64_16
+    mode: image
+    function: twinspect.algos.clip_pch:image_clip_pch_64_16
+    dependencies:
+      - torch==2.1.0
+  - name: Image CLIP PCH 128 16
+    label: image_clip_pch_128_16
+    mode: image
+    function: twinspect.algos.clip_pch:image_clip_pch_128_16
+    dependencies:
+      - torch==2.1.0
+  - name: Image CLIP PCH binary
+    label: image_clip_pch_binary
+    mode: image
+    function: twinspect.algos.clip_pch:image_clip_pch_binary
+    dependencies:
+      - torch==2.1.0
   - name: ISCC Text-Code V0 64-Bit
     label: text_code_v0_64
     mode: text
@@ -146,7 +218,7 @@ benchmarks:
       - speed
       - effectiveness
       - distribution
-    active: true
+    active: false
   - algorithm_label: image_code_v0_64
     dataset_label: mirflickr_mfnd
     metric_labels:
@@ -160,5 +232,89 @@ benchmarks:
       - speed
       - effectiveness
       - robustness
+      - distribution
+    active: false
+  - algorithm_label: image_dhash
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_clip_pch_32_4
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_clip_pch_16_4
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_clip_pch_8_4
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_clip_pch_8_16
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_clip_pch_16_16
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_clip_pch_32_16
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_clip_pch_64_16
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_clip_pch_128_16
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_clip_pch_binary
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_phash
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
+      - distribution
+    active: true
+  - algorithm_label: image_phash_simple
+    dataset_label: mirflickr_mfnd
+    metric_labels:
+      - speed
+      - effectiveness
       - distribution
     active: true

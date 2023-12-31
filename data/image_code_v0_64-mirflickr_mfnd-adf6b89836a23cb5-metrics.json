@@ -1,0 +1,17 @@
+{
+  "algorithm": "image_code_v0_64",
+  "dataset": "mirflickr_mfnd",
+  "checksum": "adf6b89836a23cb5",
+  "metrics": {
+    "speed": {
+      "min": 195.55232558139534,
+      "max": 7449.663461538462,
+      "mean": 1537.0276161605052,
+      "median": 1435.6625,
+      "min_human": "0.20 MB/s",
+      "max_human": "7.45 MB/s",
+      "mean_human": "1.54 MB/s",
+      "median_human": "1.44 MB/s"
+    }
+  }
+}

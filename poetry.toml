@@ -1,0 +1,7 @@
+[virtualenvs]
+create = false
+in-project = true
+
+#[installer]
+#max-workers = 1
+

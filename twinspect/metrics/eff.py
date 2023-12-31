@@ -86,6 +86,32 @@ from twinspect.metrics.utils import update_json, best_threshold, get_metric
 from loguru import logger as log
 
 
+def compare_to_ground_truth(simprint_path):
+    simprint_path = Path(simprint_path)
+    algo, dataset, checksum = simprint_path.name.split("-")[:3]
+    log.debug(f"Compute [white on red]effectiveness[/] metric for {algo} -> {dataset}")
+    df_simprints = load_simprints(simprint_path)
+
+    # Inferr max hamming threshold as 1/4 of the code length
+    code = df_simprints.at[0, "code"]
+    bitlength = int((len(code) / 2) * 8)
+    max_threshold = bitlength // 4
+
+    # Compute ground truth and query results
+    df_ground_truth = ground_truth(df_simprints)
+    hh = HammingHero(simprint_path)
+    df_query_results = hh.compute_queries(max_threshold)
+
+    df = df_ground_truth.merge(df_query_results, on="id")
+
+    i = 0
+    for _, row in df.iterrows():
+        print(row)
+        i += 1
+        if i >= 20:
+            break
+
+
 def effectiveness(simprint_path):
     # type: (str|Path) -> dict
     """Compute precission, recall and f1-score for simprint csv file"""

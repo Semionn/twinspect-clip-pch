@@ -1,0 +1,22 @@
+FROM continuumio/anaconda3:2023.07-1
+LABEL authors="semionn"
+
+# Create the environment and install dependencies in one go to minimize the number of layers
+RUN conda create --name twinspect_env python=3.10 && \
+    conda run -n twinspect_env conda init bash && \
+    echo "conda activate twinspect_env" > ~/.bashrc && \
+    conda install -n twinspect_env faiss-cpu poetry=1.4.0 -c conda-forge && \
+    pip install dhash 'transformers[torch]' scikit-learn && \
+    apt-get update && apt-get install -y nano git build-essential libtag1-dev libutfcpp-dev libmagic-dev && \
+    git clone https://github.com/iscc/twinspect && \
+    curl https://sh.rustup.rs -sSf | sh -s -- -y && \
+    rm -rf /var/lib/apt/lists/*  # Clean up APT to reduce image size
+
+# Set the working directory to /twinspect
+WORKDIR /twinspect
+
+# Adjust the pyproject.toml as needed before installation
+RUN sed -i 's/python = "^3.11"/python = "^3.10"/' pyproject.toml && \
+    sed -i '13 i urllib3="^1.26.16"' pyproject.toml
+
+ENTRYPOINT ["/bin/bash"]
